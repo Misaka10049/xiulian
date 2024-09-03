@@ -10,7 +10,8 @@ import requests,json,os,time,filecmp
 # 更新 update
 try:
 	version = requests.get('https://Misaka10049.github.io/xiulian/version.json').json()
-	latest_url = version['latest']
+	filename = "xiuxian v{}.0.py".format(version['latest']['id'])
+	latest_url = version['latest']['url']
 	raw = requests.get(latest_url)
 	if raw.ok:
 		with open("download", "wb") as f:
@@ -18,13 +19,14 @@ try:
 			f.close()
 		itself = os.path.basename(__file__)
 		if not filecmp.cmp(itself,"download"):
-			os.system('echo y|copy download "{}"'.format(itself))
-			os.system("del /q download")
+			os.system('del /q "{}"'.format(itself))
+			os.system('rename download "{}"'.format(filename))
 			print("脚本自动更新完成，即将重新启动！\n")
 			time.sleep(3)
-			os.system("python "+itself)
+			os.system('python "{}"'.format(filename))
 			exit()
 		else:
+			os.system('del /q download')
 			print("您的脚本已是最新版！\n")
 	else:
 		print('更新检查失败，将使用当前版本继续！\n')
