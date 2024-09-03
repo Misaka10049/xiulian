@@ -19,6 +19,7 @@ try:
 		itself = os.path.basename(__file__)
 		if not filecmp.cmp(itself,"download"):
 			os.system("echo y|copy download "+itself)
+			os.system("del /q download")
 			print("脚本自动更新完成，即将重新启动！\n")
 			time.sleep(3)
 			os.system("python "+itself)
@@ -30,8 +31,6 @@ try:
 except Exception as e:
 	print('发生错误：{}\n请报告给开发者\n'.format(e))
 	print('更新检查失败，将使用当前版本继续！\n')
-
-
 
 try:
 	res = requests.get("http://127.0.0.1:3000/")
