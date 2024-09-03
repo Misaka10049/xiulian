@@ -18,7 +18,7 @@ try:
 			f.close()
 		itself = os.path.basename(__file__)
 		if not filecmp.cmp(itself,"download"):
-			os.system("echo y|copy download "+itself)
+			os.system('echo y|copy download "{}"'.format(itself))
 			os.system("del /q download")
 			print("脚本自动更新完成，即将重新启动！\n")
 			time.sleep(3)
