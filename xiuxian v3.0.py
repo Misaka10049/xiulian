@@ -21,9 +21,9 @@ try:
 		if not filecmp.cmp(itself,"download"):
 			os.system('del /q "{}"'.format(itself))
 			os.system('rename download "{}"'.format(filename))
-			print("脚本自动更新完成，即将重新启动！\n")
-			time.sleep(3)
-			os.system('python "{}"'.format(filename))
+			print("脚本自动更新完成，请重新启动！\n\n")
+			print("按任意键退出...")
+			os.system("pause 1>nul 2>nul")
 			exit()
 		else:
 			os.system('del /q download')
