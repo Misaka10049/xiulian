@@ -1,10 +1,12 @@
 {
 	"latest":{
 		"id": 3,
+		"ver": 3,
 		"url": "https://Misaka10049.github.io/xiulian/xiuxian v3.0.py"
 	},
 	"past":[ 
+		"https://Misaka10049.github.io/xiulian/xiuxian.py",
 		"https://Misaka10049.github.io/xiulian/xiuxian v3.0.py",
-		"https://Misaka10049.github.io/xiulian/xiuxian.py"
+		"https://Misaka10049.github.io/xiulian/xiuxian v4.0.py"
 	]
 }
