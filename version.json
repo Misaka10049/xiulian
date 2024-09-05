@@ -1,12 +1,15 @@
 {
 	"latest":{
 		"id": 4,
-		"ver": 4,
-		"url": "https://Misaka10049.github.io/xiulian/xiuxian v4.0.py"
+		"xid": 4,
+		"yid": 1,
+		"ver": 5,
+		"url": "https://Misaka10049.github.io/xiulian/xiuxian v4.1.py"
 	},
 	"past":[ 
 		"https://Misaka10049.github.io/xiulian/xiuxian.py",
 		"https://Misaka10049.github.io/xiulian/xiuxian v3.0.py",
-		"https://Misaka10049.github.io/xiulian/xiuxian v4.0.py"
+		"https://Misaka10049.github.io/xiulian/xiuxian v4.0.py",
+		"https://Misaka10049.github.io/xiulian/xiuxian v4.1.py"
 	]
 }
