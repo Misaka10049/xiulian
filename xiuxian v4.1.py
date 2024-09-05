@@ -5,13 +5,21 @@
 @description 基于LiteLoaderQQNT和NapCatQQ/LLOneBot实现的自动修仙
 '''
 
-import requests,json,os,time,filecmp
+import requests,json,os,time,filecmp,platform
 
+# 判断系统版本
+if platform.system() == "Linux":
+	islinux = True
+else:
+	islinux = False
 verid = 5
 
 # 更新 update
 try:
 	version = requests.get('https://Misaka10049.github.io/xiulian/version.json').json()
+	itself = os.path.basename(__file__)
+	if itself == "xiuxian v4.0.py":
+		os.system('rename "{}" "xiuxian v4.1.py"'.format(itself))
 	if verid < version['latest']['ver']:
 		if "xid" in version['latest']:
 			filename = "xiuxian v{}.{}.py".format(version['latest']['xid'],version['latest']['yid'])
@@ -23,12 +31,18 @@ try:
 			with open("download", "wb") as f:
 				f.write(raw.content)
 				f.close()
-			itself = os.path.basename(__file__)
-			os.system('del /q "{}"'.format(itself))
-			os.system('rename download "{}"'.format(filename))
+			if islinux:
+				os.system('rm -f "{}"'.format(itself))
+				os.system('mv download "{}"'.format(filename))
+			else:
+				os.system('del /q "{}"'.format(itself))
+				os.system('rename download "{}"'.format(filename))
 			print("脚本自动更新完成，请重新启动！\n")
 			print("按任意键退出...")
-			os.system("pause 1>nul 2>nul")
+			if islinux:
+				os.system("read tmp")
+			else:
+				os.system("pause 1>nul 2>nul")
 			exit()
 		else:
 			print('连接更新服务器失败，将使用当前版本继续！\n')
@@ -46,7 +60,10 @@ try:
 except:
 	print("下次记得先启动机器人框架哦~\n")
 	print("按任意键退出...\n")
-	os.system("pause 1>nul 2>nul")
+	if islinux:
+		os.system("read tmp")
+	else:
+		os.system("pause 1>nul 2>nul")
 	exit()
 
 # 初始化数据
@@ -69,7 +86,10 @@ except Exception as e:
 if group == 764310096:
 	print("\n这个群是“柴郡王国”吧，你确定要这么做？(这算是一个彩蛋哦)\n")
 	print("请按任意键结束")
-	os.system("pause 1>nul 2>nul")
+	if islinux:
+		os.system("read tmp")
+	else:
+		os.system("pause 1>nul 2>nul")
 	exit()
 
 # 发送修炼函数
@@ -84,7 +104,10 @@ def auto(qun):
 
 # 手动启动修炼
 print("\n请确认上次修炼已经结束，然后按任意键启动(固定每67s发送一次修炼)\n")
-os.system("pause 1>nul 2>nul")
+if islinux:
+	os.system("read tmp")
+else:
+	os.system("pause 1>nul 2>nul")
 now=time.time()
 
 while True:
